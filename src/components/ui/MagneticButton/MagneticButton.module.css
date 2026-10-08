@@ -1,0 +1,72 @@
+.botao {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.25rem;
+  padding-inline: var(--esp-6);
+  border-radius: var(--raio-pill);
+  overflow: hidden;
+  isolation: isolate;
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-medio);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  white-space: nowrap;
+  will-change: transform;
+  transition:
+    color var(--dur-media) var(--ease-in-out-spell),
+    border-color var(--dur-media) var(--ease-in-out-spell);
+}
+
+.rotulo {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-3);
+  pointer-events: none;
+}
+
+/* Preenchimento: círculo que cresce da base com curva in-out "spell". */
+.preenchimento {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  clip-path: circle(0% at 50% 120%);
+  transition: clip-path var(--dur-lenta) var(--ease-out-expo);
+}
+
+.botao:hover .preenchimento,
+.botao:focus-visible .preenchimento {
+  clip-path: circle(150% at 50% 120%);
+}
+
+/* ---------- Variantes ---------- */
+.contorno {
+  color: var(--cor-texto);
+  border: var(--borda-forte);
+  background: hsl(40 3% 8% / 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.contorno .preenchimento {
+  background: var(--concreto-100);
+}
+
+.contorno:hover,
+.contorno:focus-visible {
+  color: var(--concreto-900);
+  border-color: var(--concreto-100);
+}
+
+.solido {
+  color: var(--concreto-900);
+  background: var(--concreto-100);
+  border: 1px solid var(--concreto-100);
+}
+
+.solido .preenchimento {
+  background: var(--branco);
+}

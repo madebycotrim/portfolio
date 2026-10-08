@@ -1,0 +1,102 @@
+.contato {
+  position: relative;
+  z-index: var(--z-conteudo);
+  padding-top: var(--esp-10);
+  padding-bottom: var(--esp-5);
+}
+
+.interno {
+  composes: container from '../../styles/layout.module.css';
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-7);
+}
+
+.rotulo {
+  composes: mono from '../../styles/layout.module.css';
+  padding-top: var(--esp-5);
+  border-top: var(--borda-forte);
+  color: var(--cor-texto-3);
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--texto-display);
+  font-weight: var(--peso-pesado);
+  font-stretch: 88%;
+  line-height: var(--entrelinha-justa);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--cor-destaque);
+}
+
+.linha:last-child {
+  padding-left: clamp(1.5rem, 8vw, 10rem);
+  color: var(--concreto-300);
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--esp-5);
+}
+
+.botaoDossieContato {
+  composes: mono from '../../styles/layout.module.css';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.25rem;
+  padding-inline: var(--esp-5);
+  background: hsl(40 2% 14%);
+  border: var(--borda-forte);
+  border-radius: var(--raio-pill);
+  color: var(--cor-texto-2);
+  cursor: pointer;
+  font-size: var(--texto-xs);
+  letter-spacing: var(--tracking-mono);
+  transition:
+    background var(--dur-rapida) var(--ease-out-expo),
+    border-color var(--dur-rapida) var(--ease-out-expo),
+    color var(--dur-rapida) var(--ease-out-expo),
+    transform var(--dur-rapida) var(--ease-out-expo);
+}
+
+.botaoDossieContato:hover {
+  background: hsl(40 2% 20%);
+  border-color: var(--concreto-300);
+  color: var(--cor-destaque);
+  transform: translateY(-2px);
+}
+
+.nota {
+  max-width: 36ch;
+  font-size: var(--texto-sm);
+  color: var(--cor-texto-3);
+}
+
+.rodape {
+  composes: mono from '../../styles/layout.module.css';
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--esp-4);
+  margin-top: var(--esp-8);
+  padding-top: var(--esp-5);
+  border-top: var(--borda);
+  color: var(--cor-texto-3);
+}
+
+.redes {
+  display: flex;
+  gap: var(--esp-6);
+}
+
+@media (max-width: 900px) {
+  .linha:last-child {
+    padding-left: 0;
+  }
+}

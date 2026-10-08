@@ -1,0 +1,129 @@
+/* ==========================================================================
+   DESIGN SYSTEM — "Concreto"
+   --------------------------------------------------------------------------
+   Fonte única da verdade visual (DESIGN.md implícito no código).
+   Todo componente consome APENAS estes tokens — nada de valores mágicos.
+
+   Princípios
+   1. Material: cimento queimado. Superfícies foscas, sem cor saturada.
+   2. Estrutura: blocos delimitados por 1px sólido e discreto.
+   3. Ritmo: espaçamento em escala base-4 (4 · 8 · 12 · 16 · 24 · 32 …).
+   4. Tipografia: sans brutalista industrial (Archivo, eixo wdth) + mono
+      para metadados técnicos.
+   5. Movimento: curvas expo/quart — nunca linear.
+   ========================================================================== */
+
+:root {
+  /* ---------- Paleta: concreto (matiz 40°, saturação ~2–4%) ---------- */
+  --concreto-950: hsl(40 4% 6%);   /* sombra profunda              */
+  --concreto-900: hsl(40 3% 8%);   /* fundo: cimento queimado      */
+  --concreto-850: hsl(40 3% 10%);  /* fundo elevado                */
+  --concreto-800: hsl(40 2% 13%);  /* card: cinza fosco médio      */
+  --concreto-750: hsl(40 2% 16%);  /* card hover                   */
+  --concreto-700: hsl(40 2% 20%);  /* grafite da malha (canvas)    */
+  --concreto-600: hsl(40 2% 28%);
+  --concreto-500: hsl(40 2% 40%);
+  --concreto-400: hsl(40 3% 54%);  /* texto terciário              */
+  --concreto-300: hsl(40 4% 68%);  /* texto secundário             */
+  --concreto-200: hsl(40 5% 82%);
+  --concreto-100: hsl(40 6% 91%);  /* texto primário               */
+  --branco: hsl(40 20% 98%);       /* destaque máximo              */
+
+  /* ---------- Papéis semânticos ---------- */
+  --cor-fundo: var(--concreto-900);
+  --cor-superficie: var(--concreto-800);
+  --cor-superficie-hover: var(--concreto-750);
+  --cor-texto: var(--concreto-100);
+  --cor-texto-2: var(--concreto-300);
+  --cor-texto-3: var(--concreto-400);
+  --cor-destaque: var(--branco);
+
+  /* Acentos de terminal (tons minerais foscos, inspirados em monitores industriais) */
+  --status-online: hsl(115 18% 58%);   /* verde sálvia mineral */
+  --status-alerta: hsl(38 42% 64%);    /* âmbar concreto */
+  --status-info: hsl(205 22% 64%);     /* ardósia azulada */
+
+  /* Bordas: 1px sólido, translúcido para herdar o tom da superfície */
+  --borda-cor: hsl(40 10% 92% / 0.08);
+  --borda-cor-forte: hsl(40 10% 92% / 0.16);
+  --borda-cor-ativa: hsl(40 10% 92% / 0.32);
+  --borda: 1px solid var(--borda-cor);
+  --borda-forte: 1px solid var(--borda-cor-forte);
+
+  /* ---------- Espaçamento (base 4px) ---------- */
+  --esp-1: 0.25rem;  /*   4 */
+  --esp-2: 0.5rem;   /*   8 */
+  --esp-3: 0.75rem;  /*  12 */
+  --esp-4: 1rem;     /*  16 */
+  --esp-5: 1.5rem;   /*  24 */
+  --esp-6: 2rem;     /*  32 */
+  --esp-7: 3rem;     /*  48 */
+  --esp-8: 4rem;     /*  64 */
+  --esp-9: 6rem;     /*  96 */
+  --esp-10: 8rem;    /* 128 */
+  --esp-11: 12rem;   /* 192 */
+
+  /* Gutter fluido da página */
+  --gutter: clamp(var(--esp-4), 3vw, var(--esp-7));
+
+  /* ---------- Tipografia ---------- */
+  --fonte-sans: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fonte-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* Escala fluida — razão ~1.25 no corpo, display monumental calibrado */
+  --texto-2xs: 0.6875rem;                               /* 11 */
+  --texto-xs: 0.75rem;                                  /* 12 */
+  --texto-sm: 0.875rem;                                 /* 14 */
+  --texto-base: 1rem;                                   /* 16 */
+  --texto-lg: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+  --texto-xl: clamp(1.35rem, 1.1rem + 0.8vw, 1.85rem);
+  --texto-2xl: clamp(1.65rem, 1.25rem + 1.5vw, 2.75rem);
+  --texto-3xl: clamp(1.85rem, 1.1rem + 2.5vw, 3.85rem);
+  --texto-display: clamp(2.75rem, 1.1rem + 5.2vw, 6.75rem);
+
+  --peso-regular: 400;
+  --peso-medio: 500;
+  --peso-forte: 700;
+  --peso-pesado: 900;
+
+  --largura-condensada: 75%;
+  --largura-normal: 100%;
+  --largura-expandida: 125%;
+
+  --entrelinha-justa: 0.86;
+  --entrelinha-titulo: 1.05;
+  --entrelinha-corpo: 1.6;
+
+  --tracking-display: -0.045em;
+  --tracking-titulo: -0.025em;
+  --tracking-mono: 0.06em;
+
+  /* ---------- Raio (brutalismo: quase reto) ---------- */
+  --raio-0: 0;
+  --raio-1: 2px;
+  --raio-2: 4px;
+  --raio-pill: 999px;
+
+  /* ---------- Elevação (sombras foscas, sem brilho) ---------- */
+  --sombra-1: 0 1px 0 hsl(0 0% 100% / 0.03) inset, 0 1px 2px hsl(0 0% 0% / 0.4);
+  --sombra-2: 0 1px 0 hsl(0 0% 100% / 0.05) inset, 0 24px 48px -16px hsl(0 0% 0% / 0.7),
+    0 8px 16px -8px hsl(0 0% 0% / 0.5);
+
+  /* ---------- Movimento ---------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-spell: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-rapida: 240ms;
+  --dur-media: 480ms;
+  --dur-lenta: 800ms;
+
+  /* ---------- Layout ---------- */
+  --largura-max: 90rem; /* 1440 */
+  --altura-header: 4rem;
+
+  /* ---------- Camadas ---------- */
+  --z-fundo: 0;
+  --z-conteudo: 1;
+  --z-grao: 50;
+  --z-header: 100;
+}

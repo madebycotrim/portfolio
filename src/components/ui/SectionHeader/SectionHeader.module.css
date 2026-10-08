@@ -1,0 +1,50 @@
+.cabecalho {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: end;
+  gap: var(--esp-5);
+  padding-block: var(--esp-6) var(--esp-7);
+  border-top: var(--borda-forte);
+}
+
+.meta {
+  composes: mono from '../../../styles/layout.module.css';
+  grid-column: 1 / 4;
+  display: flex;
+  gap: var(--esp-3);
+  align-self: start;
+  color: var(--cor-texto-3);
+}
+
+.indice {
+  color: var(--cor-texto);
+}
+
+.titulo {
+  grid-column: 4 / 10;
+  font-size: var(--texto-3xl);
+  font-weight: var(--peso-pesado);
+  font-stretch: 110%;
+  line-height: var(--entrelinha-justa);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--cor-destaque);
+}
+
+.complemento {
+  composes: mono from '../../../styles/layout.module.css';
+  grid-column: 10 / 13;
+  justify-self: end;
+  text-align: right;
+  color: var(--cor-texto-3);
+}
+
+@media (max-width: 900px) {
+  .meta,
+  .titulo,
+  .complemento {
+    grid-column: 1 / -1;
+    justify-self: start;
+    text-align: left;
+  }
+}

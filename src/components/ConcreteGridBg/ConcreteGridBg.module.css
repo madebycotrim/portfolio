@@ -1,0 +1,31 @@
+.raiz {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-fundo);
+  pointer-events: none;
+  /* Camada de composição própria: o scroll nunca invalida o canvas. */
+  contain: strict;
+  transform: translateZ(0);
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: surgir 1.6s var(--ease-out-quart) 0.2s forwards;
+}
+
+/* Vinheta: escurece as bordas e concentra o olhar no conteúdo. */
+.vinheta {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 40%, transparent 30%, var(--concreto-950) 100%),
+    linear-gradient(to bottom, transparent 70%, hsl(40 4% 6% / 0.6));
+}
+
+@keyframes surgir {
+  to {
+    opacity: 1;
+  }
+}

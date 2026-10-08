@@ -1,0 +1,19 @@
+.palavraWrap {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Máscara: o padding vertical protege acentos e descendentes do recorte;
+   a margem negativa anula o impacto no layout. */
+.mascara {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: 0.22em 0.04em 0.1em;
+  margin: -0.22em -0.04em -0.1em;
+}
+
+.letra {
+  display: inline-block;
+  will-change: transform;
+}

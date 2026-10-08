@@ -1,0 +1,181 @@
+.secao {
+  composes: secao from '../../styles/layout.module.css';
+  overflow: hidden;
+}
+
+.interno {
+  composes: container from '../../styles/layout.module.css';
+}
+
+/* ---------- Manifesto ---------- */
+.manifesto {
+  max-width: 22ch;
+  margin-left: 25%;
+  margin-bottom: var(--esp-10);
+  font-size: var(--texto-2xl);
+  font-weight: var(--peso-medio);
+  line-height: 1.12;
+  letter-spacing: var(--tracking-titulo);
+  color: var(--cor-destaque);
+  text-wrap: balance;
+}
+
+/* ---------- Corpo: números + grupos ---------- */
+.corpo {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--esp-5);
+}
+
+.numeros {
+  grid-column: 1 / 5;
+  display: flex;
+  flex-direction: column;
+}
+
+.numero {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block: var(--esp-4);
+}
+
+.numeroLinha,
+.grupoLinha {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: var(--borda-cor-forte);
+}
+
+.numeroRotulo {
+  composes: mono from '../../styles/layout.module.css';
+  color: var(--cor-texto-3);
+}
+
+.numeroValor {
+  font-size: var(--texto-2xl);
+  font-weight: var(--peso-pesado);
+  font-stretch: 112%;
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--cor-destaque);
+}
+
+.grupos {
+  grid-column: 6 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-6);
+}
+
+.grupo {
+  position: relative;
+  padding-top: var(--esp-4);
+}
+
+.grupoTitulo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-4);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-forte);
+  letter-spacing: -0.01em;
+  color: var(--cor-texto);
+}
+
+.grupoIndice,
+.grupoContagem {
+  composes: mono from '../../styles/layout.module.css';
+  color: var(--cor-texto-3);
+}
+
+.grupoContagem {
+  margin-left: auto;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+}
+
+.tag {
+  padding: var(--esp-2) var(--esp-4);
+  border: var(--borda-forte);
+  border-radius: var(--raio-pill);
+  background: hsl(40 2% 13% / 0.6);
+  font-size: var(--texto-sm);
+  color: var(--cor-texto-2);
+  will-change: transform, filter;
+  transition:
+    background var(--dur-media) var(--ease-out-expo),
+    color var(--dur-media) var(--ease-out-expo),
+    border-color var(--dur-media) var(--ease-out-expo);
+}
+
+.tag:hover {
+  background: var(--concreto-100);
+  border-color: var(--concreto-100);
+  color: var(--concreto-900);
+}
+
+/* ---------- Faixas tipográficas ---------- */
+.faixas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  margin-top: var(--esp-10);
+  padding-block: var(--esp-6);
+  border-block: var(--borda);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.faixa {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.termo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-6);
+  padding-right: var(--esp-6);
+  font-size: var(--texto-3xl);
+  font-weight: var(--peso-pesado);
+  font-stretch: 118%;
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--concreto-200);
+}
+
+.termoVazado {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--concreto-500);
+}
+
+.separador {
+  width: 0.18em;
+  height: 0.18em;
+  background: var(--concreto-500);
+}
+
+@media (max-width: 900px) {
+  .manifesto {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .numeros,
+  .grupos {
+    grid-column: 1 / -1;
+  }
+}

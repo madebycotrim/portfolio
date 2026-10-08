@@ -1,0 +1,277 @@
+.containerTerminal {
+  border: var(--borda-forte);
+  border-radius: var(--raio-1);
+  background: hsl(40 3% 10% / 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--sombra-2);
+  overflow: hidden;
+  font-family: var(--fonte-mono);
+  max-width: 44rem;
+  width: 100%;
+}
+
+.barraTopo {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  padding: var(--esp-2) var(--esp-4);
+  background: hsl(40 2% 14%);
+  border-bottom: var(--borda);
+  flex-wrap: wrap;
+}
+
+.controles {
+  display: flex;
+  gap: 6px;
+}
+
+.pontoControle {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--raio-pill);
+  background: var(--concreto-600);
+}
+
+.pontoControle:nth-child(1) {
+  background: hsl(0 30% 45%);
+}
+
+.pontoControle:nth-child(2) {
+  background: hsl(40 35% 45%);
+}
+
+.pontoControle:nth-child(3) {
+  background: hsl(115 25% 45%);
+}
+
+.tituloJanela {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--cor-texto-2);
+}
+
+.indicadorStatus {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--raio-pill);
+  background: var(--status-online);
+  box-shadow: 0 0 8px var(--status-online);
+  animation: pulsoOnline 2s infinite ease-in-out;
+}
+
+@keyframes pulsoOnline {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+.textoStatus {
+  color: var(--status-online);
+  font-weight: var(--peso-forte);
+}
+
+.separadorBarra {
+  color: var(--concreto-600);
+}
+
+.hostname {
+  color: var(--cor-texto-3);
+}
+
+.abas {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.botaoAba {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  padding: 3px var(--esp-2);
+  color: var(--cor-texto-3);
+  background: transparent;
+  border-radius: var(--raio-1);
+  transition: color var(--dur-rapida) var(--ease-out-expo), background var(--dur-rapida) var(--ease-out-expo);
+}
+
+.botaoAba:hover {
+  color: var(--cor-destaque);
+}
+
+.abaSelecionada {
+  color: var(--cor-destaque);
+  background: hsl(40 2% 20%);
+  font-weight: var(--peso-forte);
+}
+
+.corpoTerminal {
+  padding: var(--esp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+}
+
+.linhaComando {
+  display: flex;
+  gap: var(--esp-2);
+  font-size: var(--texto-xs);
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: var(--status-online);
+}
+
+.comando {
+  color: var(--cor-destaque);
+}
+
+.linhasSaida {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+
+.linhaSaida {
+  display: flex;
+  gap: var(--esp-2);
+  font-size: var(--texto-xs);
+  line-height: 1.45;
+}
+
+.prefixo {
+  color: var(--status-info);
+  flex-shrink: 0;
+  font-weight: var(--peso-forte);
+}
+
+.prefixoDestaque {
+  color: var(--status-online);
+}
+
+.textoSaida {
+  color: var(--cor-texto-2);
+}
+
+.rodapeTerminal {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-top: var(--esp-2);
+  padding-top: var(--esp-2);
+  border-top: var(--borda);
+}
+
+.cursorPiscante {
+  width: 7px;
+  height: 13px;
+  background: var(--cor-destaque);
+  animation: piscarCursor 1s steps(2, start) infinite;
+}
+
+@keyframes piscarCursor {
+  to {
+    visibility: hidden;
+  }
+}
+
+.instrucaoRodape {
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--cor-texto-3);
+}
+
+.formPrompt {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  width: 100%;
+}
+
+.inputComando {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cor-destaque);
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-xs);
+  letter-spacing: var(--tracking-mono);
+  padding: 0;
+  margin: 0;
+}
+
+.inputComando::placeholder {
+  color: var(--cor-texto-3);
+  font-style: italic;
+}
+
+.botoesComandoRapido {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: var(--esp-2);
+}
+
+.rotuloRapido {
+  font-size: var(--texto-2xs);
+  color: var(--cor-texto-3);
+  letter-spacing: var(--tracking-mono);
+}
+
+.chipComando {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  padding: 2px 6px;
+  background: hsl(40 2% 16%);
+  border: var(--borda);
+  border-radius: var(--raio-1);
+  color: var(--status-info);
+  cursor: pointer;
+  transition:
+    background var(--dur-rapida) var(--ease-out-expo),
+    border-color var(--dur-rapida) var(--ease-out-expo),
+    color var(--dur-rapida) var(--ease-out-expo);
+}
+
+.chipComando:hover {
+  background: hsl(40 2% 22%);
+  border-color: var(--status-online);
+  color: var(--status-online);
+}
+
+.saidaPreformatada {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  color: var(--cor-texto-100);
+  line-height: 1.4;
+  white-space: pre-wrap;
+  margin: 0;
+  padding: var(--esp-2) var(--esp-3);
+  background: hsl(40 4% 8%);
+  border: var(--borda);
+  border-radius: var(--raio-1);
+}
+
+@media (max-width: 640px) {
+  .abas {
+    margin-left: 0;
+    width: 100%;
+    margin-top: var(--esp-2);
+  }
+  .hostname {
+    display: none;
+  }
+}

@@ -1,0 +1,50 @@
+.link {
+  --altura-linha: 1.3em;
+  --cor-base: var(--cor-texto-2);
+  --cor-hover: var(--cor-destaque);
+
+  position: relative;
+  display: inline-flex;
+  padding-block: var(--esp-1);
+  color: var(--cor-base);
+}
+
+.rolo {
+  display: inline-flex;
+  height: var(--altura-linha);
+  line-height: var(--altura-linha);
+  overflow: hidden;
+}
+
+.letra {
+  display: inline-block;
+  text-shadow: 0 var(--altura-linha) var(--cor-hover);
+  transition: transform var(--dur-media) var(--ease-out-expo);
+  transition-delay: calc(var(--i) * 14ms);
+  will-change: transform;
+}
+
+.link:hover .letra,
+.link:focus-visible .letra {
+  transform: translateY(calc(var(--altura-linha) * -1));
+}
+
+/* Sublinha: entra pela esquerda, sai pela direita. */
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--cor-hover);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-media) var(--ease-in-out-spell);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}

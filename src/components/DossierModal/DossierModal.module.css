@@ -1,0 +1,292 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-header) + 60);
+  background: hsl(40 4% 6% / 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: grid;
+  place-items: center;
+  padding: var(--esp-4);
+  overflow-y: auto;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 54rem;
+  border: var(--borda-forte);
+  border-radius: var(--raio-1);
+  background: hsl(40 3% 10%);
+  box-shadow: 0 32px 64px -16px hsl(0 0% 0% / 0.8), 0 0 0 1px hsl(40 10% 92% / 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-block: auto;
+}
+
+.barraTopo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--esp-3) var(--esp-5);
+  background: hsl(40 2% 14%);
+  border-bottom: var(--borda);
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+}
+
+.metaJanela {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  letter-spacing: var(--tracking-mono);
+}
+
+.pontoVerde {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--raio-pill);
+  background: var(--status-online);
+  box-shadow: 0 0 6px var(--status-online);
+}
+
+.idDossie {
+  color: var(--cor-destaque);
+  font-weight: var(--peso-forte);
+}
+
+.acoesTopo {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+}
+
+.botaoAcao {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--cor-texto-2);
+  padding: 4px var(--esp-3);
+  background: hsl(40 2% 18%);
+  border: var(--borda);
+  border-radius: var(--raio-1);
+  cursor: pointer;
+  transition:
+    color var(--dur-rapida) var(--ease-out-expo),
+    background var(--dur-rapida) var(--ease-out-expo),
+    border-color var(--dur-rapida) var(--ease-out-expo);
+}
+
+.botaoAcao:hover {
+  color: var(--cor-destaque);
+  background: hsl(40 2% 24%);
+  border-color: var(--concreto-300);
+}
+
+.botaoFechar {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--cor-texto-3);
+  padding: 4px var(--esp-2);
+  border-radius: var(--raio-1);
+  transition:
+    color var(--dur-rapida) var(--ease-out-expo),
+    background var(--dur-rapida) var(--ease-out-expo);
+}
+
+.botaoFechar:hover {
+  color: var(--cor-destaque);
+  background: hsl(40 2% 22%);
+}
+
+.conteudo {
+  padding: var(--esp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-6);
+  max-height: 76vh;
+  overflow-y: auto;
+}
+
+.cabecalhoDossie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  border-bottom: var(--borda);
+  padding-bottom: var(--esp-5);
+}
+
+.tagCargo {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  color: var(--status-info);
+  letter-spacing: var(--tracking-mono);
+}
+
+.nomeTitulo {
+  font-size: var(--texto-3xl);
+  font-weight: var(--peso-pesado);
+  letter-spacing: var(--tracking-titulo);
+  color: var(--cor-destaque);
+  line-height: 1.1;
+}
+
+.contatoMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-4);
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-xs);
+  color: var(--cor-texto-2);
+}
+
+.secaoDossie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+}
+
+.tituloSecao {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--concreto-300);
+  border-bottom: 1px dashed var(--borda-cor);
+  padding-bottom: var(--esp-1);
+}
+
+.textoSintese {
+  font-size: var(--texto-sm);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+
+.gradeStack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-3);
+}
+
+.itemStackBloco {
+  padding: var(--esp-3);
+  background: hsl(40 2% 13%);
+  border: var(--borda);
+  border-radius: var(--raio-1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rotuloStackBloco {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  color: var(--status-online);
+}
+
+.textoStackBloco {
+  font-size: var(--texto-xs);
+  color: var(--cor-texto);
+  line-height: 1.45;
+}
+
+.listaExperiencias {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-4);
+}
+
+.itemExperiencia {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: var(--esp-3);
+  border-bottom: 1px solid hsl(40 3% 15%);
+}
+
+.topoExp {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+}
+
+.cargoExp {
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-forte);
+  color: var(--cor-destaque);
+}
+
+.periodoExp {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  color: var(--cor-texto-3);
+  letter-spacing: var(--tracking-mono);
+}
+
+.resumoExp {
+  font-size: var(--texto-xs);
+  color: var(--cor-texto-2);
+  line-height: 1.5;
+}
+
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--esp-4) var(--esp-6);
+  background: hsl(40 2% 12%);
+  border-top: var(--borda);
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+}
+
+.infoRodape {
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  color: var(--cor-texto-3);
+}
+
+@media print {
+  .overlay {
+    position: static;
+    background: #fff;
+    padding: 0;
+  }
+  .modal {
+    box-shadow: none;
+    border: none;
+    max-width: 100%;
+    background: #fff;
+    color: #111;
+  }
+  .barraTopo,
+  .rodape {
+    display: none;
+  }
+  .conteudo {
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+  }
+  .nomeTitulo {
+    color: #000;
+  }
+  .cargoExp {
+    color: #000;
+  }
+  .textoSintese,
+  .resumoExp,
+  .textoStackBloco {
+    color: #333;
+  }
+}
+
+@media (max-width: 768px) {
+  .gradeStack {
+    grid-template-columns: 1fr;
+  }
+}

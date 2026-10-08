@@ -1,0 +1,342 @@
+.card {
+  --mx: 50%;
+  --my: 50%;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  height: 100%;
+  padding: var(--esp-4);
+  overflow: hidden;
+  isolation: isolate;
+  border: var(--borda);
+  border-radius: var(--raio-1);
+  background:
+    linear-gradient(165deg, hsl(40 3% 16% / 0.92), hsl(40 2% 12% / 0.94) 55%, hsl(40 3% 10% / 0.96));
+  box-shadow: var(--sombra-1);
+  cursor: pointer;
+  outline: none;
+  transition:
+    transform var(--dur-lenta) var(--ease-out-expo),
+    box-shadow var(--dur-lenta) var(--ease-out-expo),
+    border-color var(--dur-media) var(--ease-out-quart);
+  will-change: transform;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--borda-cor-ativa);
+  box-shadow: var(--sombra-2);
+}
+
+.card:focus-visible {
+  outline: 1px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+/* ---------- Mídia ---------- */
+.midia {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.midia::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, hsl(40 4% 6% / 0.96) 0%, hsl(40 4% 6% / 0.5) 45%, hsl(40 4% 6% / 0.25) 100%);
+}
+
+.imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.62);
+  transform: scale(1.06);
+  transition:
+    transform 1.4s var(--ease-out-expo),
+    filter var(--dur-lenta) var(--ease-out-quart);
+}
+
+.card:hover .imagem,
+.card:focus-visible .imagem {
+  transform: scale(1.01);
+  filter: grayscale(1) contrast(1.1) brightness(0.78);
+}
+
+/* ---------- Holofote elástico ---------- */
+.holofote {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    440px circle at var(--mx) var(--my),
+    hsl(40 20% 96% / 0.08),
+    transparent 65%
+  );
+  transition: opacity var(--dur-media) var(--ease-out-quart);
+}
+
+.card:hover .holofote {
+  opacity: 1;
+}
+
+/* ---------- Topo ---------- */
+.topo {
+  composes: mono from '../../styles/layout.module.css';
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-2);
+  color: var(--cor-texto-3);
+  font-size: var(--texto-2xs);
+  flex-wrap: wrap;
+}
+
+.topoEsq {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  flex-wrap: wrap;
+}
+
+.indice {
+  color: var(--cor-texto);
+}
+
+.categoria {
+  padding: 2px 6px;
+  border: var(--borda-forte);
+  border-radius: var(--raio-pill);
+}
+
+.tagOrigem {
+  padding: 1px 6px;
+  background: hsl(40 2% 18%);
+  border: var(--borda);
+  border-radius: var(--raio-1);
+  color: var(--status-info);
+  font-size: 10px;
+}
+
+.ano {
+  margin-left: auto;
+}
+
+/* ---------- Métrica ---------- */
+.metrica {
+  display: flex;
+  align-items: baseline;
+  gap: var(--esp-2);
+  flex-wrap: wrap;
+}
+
+.metricaValor {
+  font-size: var(--texto-3xl);
+  font-weight: var(--peso-pesado);
+  font-stretch: 112%;
+  line-height: var(--entrelinha-justa);
+  letter-spacing: var(--tracking-display);
+  color: var(--concreto-200);
+  transition: color var(--dur-media) var(--ease-out-quart);
+}
+
+.card:hover .metricaValor {
+  color: var(--cor-destaque);
+}
+
+.metricaRotulo {
+  composes: mono from '../../styles/layout.module.css';
+  color: var(--cor-texto-3);
+}
+
+/* ---------- Corpo ---------- */
+.corpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+}
+
+.cabecalhoTitulo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--esp-3);
+}
+
+.titulos {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.titulo {
+  font-size: var(--texto-xl);
+  font-weight: var(--peso-forte);
+  font-stretch: 110%;
+  line-height: var(--entrelinha-titulo);
+  letter-spacing: var(--tracking-titulo);
+  text-transform: uppercase;
+  color: var(--cor-destaque);
+}
+
+.subtitulo {
+  font-size: var(--texto-xs);
+  color: var(--cor-texto-2);
+  line-height: 1.4;
+}
+
+.grupoAcoesCard {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-1);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.linkAcaoCard {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid var(--concreto-400);
+  border-radius: var(--raio-pill);
+  background: hsl(40 2% 14% / 0.8);
+  color: var(--cor-destaque);
+  font-family: var(--fonte-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-mono);
+  text-decoration: none;
+  transition:
+    background var(--dur-rapida) var(--ease-out-expo),
+    border-color var(--dur-rapida) var(--ease-out-expo),
+    color var(--dur-rapida) var(--ease-out-expo),
+    transform var(--dur-rapida) var(--ease-out-expo);
+}
+
+.linkAcaoCard:hover {
+  background: hsl(40 2% 24%);
+  border-color: var(--status-online);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.botaoInspecionar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: 4px 10px;
+  border: var(--borda-forte);
+  border-radius: var(--raio-pill);
+  background: hsl(40 2% 16% / 0.8);
+  color: var(--cor-texto-2);
+  font-family: var(--fonte-mono);
+  font-size: var(--texto-2xs);
+  letter-spacing: var(--tracking-mono);
+  flex-shrink: 0;
+  transition:
+    background var(--dur-media) var(--ease-out-expo),
+    color var(--dur-media) var(--ease-out-expo),
+    border-color var(--dur-media) var(--ease-out-expo),
+    transform var(--dur-media) var(--ease-out-expo);
+}
+
+.card:hover .botaoInspecionar {
+  background: var(--concreto-100);
+  color: var(--concreto-900);
+  border-color: var(--concreto-100);
+  transform: translateX(2px);
+}
+
+.rotuloBotao {
+  font-weight: var(--peso-medio);
+}
+
+/* ---------- Painel de logs nas bordas inferiores (Details Vault / Microkit) ---------- */
+.painelLogs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--esp-2) var(--esp-3);
+  border: var(--borda);
+  border-radius: var(--raio-1);
+  background: hsl(40 4% 8% / 0.85);
+  font-family: var(--fonte-mono);
+  overflow: hidden;
+}
+
+.barraStatusLogs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--cor-texto-3);
+  letter-spacing: var(--tracking-mono);
+  padding-bottom: 3px;
+  border-bottom: 1px solid hsl(40 10% 92% / 0.05);
+}
+
+.pontoPulso {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--raio-pill);
+  background: var(--status-online);
+  margin-right: 4px;
+}
+
+.rotuloLogsHeader {
+  color: var(--cor-texto-3);
+}
+
+.tagLogsEstado {
+  margin-left: auto;
+  color: var(--status-online);
+}
+
+.listaLogs {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.linhaLogCard {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-size: 11px;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tempoLog {
+  color: var(--cor-texto-3);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.tagNivel {
+  font-weight: var(--peso-forte);
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+.tagNivel_INFO { color: var(--status-info); }
+.tagNivel_SYS { color: var(--concreto-300); }
+.tagNivel_NET { color: var(--status-online); }
+.tagNivel_PERF { color: var(--status-alerta); }
+.tagNivel_SEC { color: hsl(0 40% 60%); }
+
+.msgLogCard {
+  color: var(--cor-texto-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
